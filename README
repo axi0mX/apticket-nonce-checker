@@ -1,0 +1,17 @@
+This script parses 32-bit APTicket .der files and .shsh files and prints the nonce inside of the ticket.
+
+Compatible with macOS and Linux. openssl is required, but should be installed by default.
+
+Your APTickets should be good for the iOS 9.x restore bug (32-bit only) if they do not have a nonce.
+
+Example:
+
+$ ./apticket-nonce-checker.py iPhone5_8.3-12F70.shsh 
+Parsing APTicket from SHSH file.
+APTicket has a nonce.
+Nonce (hex dump): eabcfa378d0dbca8c26d1c25de56928cd85ba06a
+Nonce length:     20 bytes
+
+$ ./apticket-nonce-checker.py iPhone5_9.3.5-13G36.shsh
+Parsing APTicket from SHSH file.
+APTicket does not have a nonce.

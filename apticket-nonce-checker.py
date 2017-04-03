@@ -43,6 +43,12 @@ if __name__ == '__main__':
 		print 'ERROR: Provide path to SHSH or APTicket as argument to this script.'
 		sys.exit(1)
 	data = open(sys.argv[1], 'rb').read()
+
+	if data.startswith('bplist00'):
+		print 'ERROR: This is a binary plist. Convert it to XML first.'
+		print 'This command works on macOS: plutil -convert xml1 %s' % sys.argv[1]
+		sys.exit(1)
+	
 	if '<plist version=' in data:
 		print 'Parsing APTicket from SHSH file.'
 		shsh = plistlib.readPlistFromString(data)

@@ -1,25 +1,27 @@
-This script parses 32-bit APTicket .der files and .shsh files and prints the nonce inside of the ticket.
+This script parses APTicket and SHSH files for 32-bit iOS devices and prints the nonce inside of the APTicket.
 
-Compatible with macOS and Linux. openssl is required, but should be installed by default.
+Compatible with macOS and Linux. openssl is required, but it should be installed by default.
 
 
 
 * FREQUENTLY ASKED QUESTIONS *
 
 
-1. What SHSH/APTickets can be used to restore to an old iOS version without a jailbreak with alitek123's bug?
+1. What SHSH/APTickets can be used to restore to an older iOS version without a jailbreak with alitek123's bug?
 
-* Your device must be a 32-bit A5/A6 iOS device: iPhone 4s, iPhone 5, iPhone 5c, iPad 2, iPad 3, iPad 4, iPad mini, iPod Touch 5G
+* Your device must be a 32-bit A5/A6 iOS device: iPhone 4s, iPhone 5, iPhone 5c, iPad 2, iPad (3rd generation), iPad (4th generation), iPad mini, iPod Touch (5th generation)
 
-* Your SHSH/APTicket cannot be for someone else's device. SHSH/APTickets are device specific.
+* Your SHSH/APTicket cannot be for someone else's device. SHSH/APTickets are device specific. Don't ask other people for their SHSH/APTickets, your device will not accept them.
 
 * Your SHSH/APTicket must be for iOS 9.x. Other iOS versions cannot restore with this bug.
 
 * Your SHSH/APTicket must not have a nonce. Use this script to check if your SHSH/APTicket has a nonce.
 
-* Your SHSH/APTicket should be complete: You need the APTicket as well as the LLB and iBSS SHSH. Most SHSH/APTickets which do not have a nonce will have iBSS and LLB SHSH, so you probably have them. Without iBSS SHSH you can only restore from Recovery Mode and iOS 9.x must be currently installed on your device.
+* Your SHSH/APTicket should be complete: You need the APTicket as well as the LLB and iBSS SHSH. Most SHSH/APTickets which do not have a nonce will have iBSS and LLB SHSH, so you probably have them. 
 
-* You must restore from DFU Mode if your device does not currently have iOS 9.x installed.
+* If you don't have iBSS SHSH, you can only restore from Recovery Mode and iOS 9.x must be currently installed on your device.
+
+* If your device does not currently have iOS 9.x installed, you can only restore from DFU Mode.
 
 
 
@@ -31,11 +33,11 @@ Download it from the official site: https://downgrade.party
 
 
 
-3. I have iOS 9.x installed. Can I dump the SHSH/APTicket from my device and use them to restore?
+3. I have iOS 9.x installed. Can I dump the 9.x SHSH/APTicket from my device and use them to restore with this bug?
 
-SHSH/APTickets dumped from a device will most likely have a nonce, and you won't be able to use them to restore with this bug.
+Probably not. SHSH/APTickets dumped from a device will most likely have a nonce, and you won't be able to use them to restore with this bug.
 
-Except for S5L8942 devices (iPad Mini, iPod Touch 5G, and the revised iPad 2: iPad2,4), you might be able to use them to restore with Odysseus, but only if your device is jailbroken. S5L8942 devices are not supported with Odysseus, because there are no firmware decryption keys available.
+Except for S5L8942 devices (iPad mini, iPod Touch (5th generation), and the revised iPad 2 model: iPad2,4), you might be able to use them to restore with Odysseus, but only if your device is already jailbroken. S5L8942 devices are not supported with Odysseus, because there are no firmware decryption keys available.
 
 
 
@@ -57,22 +59,24 @@ Get it from here: https://github.com/iApeiron/savethemblobs
 
 
 
-5. How do I check my SHSH/APTickets to see if they have a nonce?
+6. How do I check my SHSH/APTickets to see if they have a nonce?
 
-Download this script and your SHSH/APTickets to your computer. In Terminal, run the script and provide the APTicket/SHSH file as the first argument.
+Download this script and your SHSH/APTickets to your computer. 
+
+In Terminal, run the script and provide the APTicket/SHSH file as the first argument.
 
 Example:
 
-$ ./apticket-nonce-checker.py iPhone5_8.3-12F70.shsh 
+$ ./apticket-nonce-checker.py iPhone_5-8.3-12F70.shsh 
 Parsing APTicket from SHSH file.
 APTicket has a nonce.
 Nonce (hex dump): eabcfa378d0dbca8c26d1c25de56928cd85ba06a
 Nonce length:     20 bytes
 
 
-$ ./apticket-nonce-checker.py iPhone5_9.3.5-13G36.shsh
+$ ./apticket-nonce-checker.py iPhone_5-9.3.5-13G36.shsh
 Parsing APTicket from SHSH file.
 APTicket does not have a nonce.
 
 
-If you don't get the expected output, attach the SHSH/APTicket to your comment on Github and I will take a look at it.
+If you don't get the expected output or there is an error message, attach the SHSH/APTicket to your comment on Github and I will take a look at it.

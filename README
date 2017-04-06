@@ -65,6 +65,7 @@ Download this script and your SHSH/APTickets to your computer.
 
 In Terminal, run the script and provide the APTicket/SHSH file as the first argument.
 
+
 Example:
 
 $ ./apticket-nonce-checker.py iPhone_5-8.3-12F70.shsh 
@@ -79,4 +80,4 @@ Parsing APTicket from SHSH file.
 APTicket does not have a nonce.
 
 
-If you don't get the expected output or there is an error message, attach the SHSH/APTicket to your comment on Github and I will take a look at it.
+If you don't get the expected output, or there is an error message, attach the SHSH/APTicket to your comment on Github and I will take a look at it.

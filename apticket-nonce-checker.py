@@ -49,10 +49,14 @@ if __name__ == '__main__':
 		print 'This command works on macOS: plutil -convert xml1 %s' % sys.argv[1]
 		sys.exit(1)
 	
-	if '<plist version=' in data:
-		print 'Parsing APTicket from SHSH file.'
-		shsh = plistlib.readPlistFromString(data)
-		print_apticket_nonce(shsh['APTicket'].data)
+        if 'APTicket' in data:
+                print 'Parsing APTicket from SHSH file.'
+                shsh = plistlib.readPlistFromString(data)
+                print_apticket_nonce(shsh['APTicket'].data)
+        elif 'ApImg4Ticket' in data:
+                print 'Parsing ApImg4Ticket from SHSH file.'
+                shsh = plistlib.readPlistFromString(data)
+                print_apticket_nonce(shsh['ApImg4Ticket'].data
 	else:
 		print 'Parsing APTicket.'
 		print_apticket_nonce(data)
